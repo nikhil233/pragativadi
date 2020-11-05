@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    font-family: Arial;
+    background-color: #ececec;
+  }
+  section{
+    margin: 10px 0;
+  }
+  .nav-item{
+   
+  }
+  main{
+    margin: 0;
+  }
+  .nnaavv{
+    border-top: 5px solid #343a40;
+    border-bottom: 5px solid #343a40;
+  }
+  .bg-primary{
+    background-color: #1570a6!important;
+  }
+  .container{
+    background-color: #fff;
+  }
+  .iframe{
+    max-width: 100%;
+    height: 300px;
+  }
+  .share{
+    display: flex;
+    justify-content: space-around;
+  }
+  .fa{
+    font-size:30px;
+  }
+  .fa-whatsapp{
+    color: green;
+  }
+  .fa-linkedin{
+    color: #000;
+  }
+  footer{
+    padding-top: 50px;
+    height: max-content;
+    color: #fff;
+    /* display: flex;
+    justify-content: space-between; */
+    border-top: 5px solid #343a40;
+    border-bottom: 5px solid #343a40;
+  }
+  .footer_end{
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer_nav{
+    color: #fff;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    width: max-content;
+  }
+  .footer_nav li a{
+    color: #fff;
+    
+  }
+  .list_img{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border : 1px solid;
+
+  }
+  .posts{
+    width: 100%;
+  }
+  .pagination.main{
+    width: 500px;
+    overflow-x: scroll;
+  }
+  #pleas{
+    color: red;
+  }
+  @media  (max-width:768px){
+    .pagination.main{
+      width: 100%;
+      overflow-x: scroll;
+    }
+    .news_pages{
+      display: none;
+    }
+    footer,.footer_end{
+      flex-direction: column;
+    }
+    .footer_nav{
+      flex-direction: column;
+    }
+  }
+  @media only screen and (max-width:465px){
+    .pagination.main{
+      width: 100%;
+      overflow-x: scroll;
+    }
+  }
+  .logo_con{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+  }
+  .logo{
+    max-width: 250px;
+  }
+  /* The grid: Four equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin-left : auto;
+    margin-right : auto;
+   
+  }
+  .column img{
+    border: 1px solid;
+    padding: 10px;
+  }
+  .news_pages{
+      overflow-y: scroll;
+      height: 150vh;
+  }
+  /* Style the images inside the grid */
+  .column img {
+    opacity: 0.8; 
+    cursor: pointer; 
+  }
+  .pagin{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  #expandedImg{
+    max-width: 100%;
+    height: auto;
+  }
+  .column img:hover {
+    opacity: 1;
+  }
+  
+  /* Clear floats after the columns */
+  /* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  } */
+  
+  /* The expanding image container */
+   .container {
+    position: relative;
+    /* display: none; */
+  } 
+  
+  /* Expanding image text */
+  #imgtext {
+    position: relative;
+    top: 0px;
+    left: 15px;
+    z-index: 10;
+    color: #000;
+    font-size: 20px;
+  }
+  
+  /* Closable button inside the expanded image */
+  .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
