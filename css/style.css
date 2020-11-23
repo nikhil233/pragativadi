@@ -14,6 +14,9 @@
   .nav-item{
    
   }
+  area:hover{
+    background-color: #000;
+  }
   main{
     margin: 0;
   }

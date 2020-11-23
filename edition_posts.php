@@ -43,11 +43,26 @@ function showPosts( $current_page_num, $page_limit, $page_offset){
     $resultk= $crud->getData($sqlk);
     $val=array();
     foreach($resultk as $cid){
+        
         $sql=  "SELECT news_posts.*,cities.city_name from news_posts,cities where cities.id=".$cid['id']." and cities.id=news_posts.city_id  order by news_posts.news_date DESC LIMIT $page_limit OFFSET $page_offset  ";
         $result=$crud->getData($sql);
-        array_push($val,$result[0]);
+        // print_r($result);
+        if(count($result)>0){
+            foreach($result as $row){
+                array_push($val,$row);
+            }
+        }
     }
-    // echo (count($val) > 0);
+    $date = array();
+    foreach ($val as $key => $row)
+    {
+        $date[$key] = $row['news_date'];
+    }
+    array_multisort($date, SORT_DESC, $val);
+    // print_r($val);
+    
+    //print_r($val);
+    //echo (count($val) > 0 );
     // check database is not empty
     if(count($val) > 0){
         

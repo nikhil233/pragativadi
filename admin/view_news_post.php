@@ -40,7 +40,8 @@ require('top.php');
                 <div class="col-md-4 col-12">
                     <h2>Page <?php echo $row['page_no'] ?></h2>
                     <img src="<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>" alt="" class="news_img">
-                    <a href="change_news_image.php?id=<?php echo $row['id'] ?>&city_name=<?php echo $res['city_name'] ?>">Edit</a>
+                    <a href="change_news_image.php?id=<?php echo $row['id'] ?>&city_name=<?php echo $res['city_name'] ?>" class="btn btn-primary"   style="padding:5px 10px;float:left;">Edit</a>
+                    <a href="map_news_image.php?id=<?php echo $row['id'] ?>&city_name=<?php echo $res['city_name'] ?>"   class="btn btn-info"   style="padding:5px 10px; float:right;">Map</a>
                     
                 </div>
                 <?php

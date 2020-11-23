@@ -48,9 +48,10 @@ $resulti=$crud->getData($sqli);
                     $active='';
                     if($i==1){
                         $active='active';
+                        $id_first=$row['id'];
                     }
                 ?>
-                <li class="page-item <?php echo $active?>"><button class="page-link <?php echo 'Page_'.$i ?>"   onclick="myFunction2('<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>','<?php echo 'Page '.$i ?>','<?php echo $i?>');"><?php echo $i ?></button></li>
+                <li class="page-item <?php echo $active?>"><button class="page-link <?php echo 'Page_'.$i ?>"   onclick="myFunction2('<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>','<?php echo 'Page '.$i ?>','<?php echo $i?>','<?php echo $row['id']?>');"><?php echo $i ?></button></li>
                 <?php
                     $i++;
                     }
@@ -103,7 +104,7 @@ $resulti=$crud->getData($sqli);
                ?>
                 <div class="column">
                     <p class="<?php echo $active?>">Page <?php echo $row['page_no'] ?></p>
-                    <img src="<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>" alt=" Page <?php echo $row['page_no'] ?>" style="width:70%" onclick="myFunction(this,'<?php echo $i?>');">
+                    <img src="<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>" alt=" Page <?php echo $row['page_no'] ?>" style="width:70%" onclick="myFunction(this,'<?php echo $i?>','<?php echo $row['id']?>');">
                 </div>
                 <?php
                 $i++;
@@ -113,7 +114,7 @@ $resulti=$crud->getData($sqli);
 
         </div>
         <div class="col-md-9">
-            <div class="container">
+            <div class="container" >
                 <?php
                  $curStr=$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 ?>
@@ -132,10 +133,25 @@ $resulti=$crud->getData($sqli);
                 <h2 id="imgtext">Page 1</h2>
                 
                     <h1 id="pleas"></h1>
-                     <a href="<?php echo SITE_NEWS_IMAGE.$first_img ?>" id="lar_im"> <img src="<?php echo SITE_NEWS_IMAGE.$first_img ?>" id="expandedImg" style="width:100%"></a>
-                   
-                
-                
+                     <!-- <a href="<?php echo SITE_NEWS_IMAGE.$first_img ?>" id="lar_im"> <img src="<?php echo SITE_NEWS_IMAGE.$first_img ?>" id="expandedImg" style="width:100%"></a> -->
+                     <img class="map" src="<?php echo SITE_NEWS_IMAGE.$first_img ?>" id="expandedImg"  style="max-width:100%!imporatant;"  usemap="#neews">
+                     
+                     <map name="neews" id="maping">
+                     <?php
+                        $sqln=  "SELECT * from news_map where news_im_id=$id_first ";
+                        $resultn=$crud->getData($sqln);
+                        // echo '<pre>';
+                        // print_r($result);
+                        if(count($resultn)>0){
+                            foreach ((array)$resultn as $res) {
+                                ?>
+                                 <area shape="rect" coords="<?php echo $res['x'].','.$res['y'].','.$res['x2'].','.$res['y2'] ?>"  href="<?php echo SITE_NEWSMAP_IMAGE.$res['image'] ?>" target="_blank" alt="news">
+                                <!-- <img src="<?php echo SITE_NEWSMAP_IMAGE.$res['image'] ?>" alt=""> -->
+                            <?php
+                            }
+                        }
+                        ?>
+                    </map>                               
             </div>
         </div>
     </div>
@@ -158,7 +174,7 @@ $resulti=$crud->getData($sqli);
                         $active='active';
                     }
                 ?>
-                <li class="page-item <?php echo $active?>"><button class="page-link <?php echo 'Page_'.$i ?>"   onclick="myFunction2('<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>','<?php echo 'Page '.$i ?>','<?php echo $i?>');"><?php echo $i ?></button></li>
+                <li class="page-item <?php echo $active?>"><button class="page-link <?php echo 'Page_'.$i ?>"   onclick="myFunction2('<?php echo SITE_NEWS_IMAGE.$row['page_image'] ?>','<?php echo 'Page '.$i ?>','<?php echo $i?>','<?php echo $row['id']?>');"><?php echo $i ?></button></li>
                 <?php
                     $i++;
                     }
@@ -193,3 +209,8 @@ else{
 }
     require('footer.php');
 ?>
+ <script type="text/javascript">
+        $(function () {
+          
+        });
+</script>

@@ -22,7 +22,7 @@ $db = new DbConfig();
     <main role="main">
     <div class="container">
     <section>
-        <div class="container-fluid ">
+        <div class="container ">
             <div class="logo_con">
                 <a href="<?php echo FRONT_SITE_PATH?>"><img src="<?php echo FRONT_SITE_PATH?>logo1.jpg" alt="" class="logo"></a>
                 <a href="<?php echo FRONT_SITE_PATH?>avimat_list"><img src="<?php echo FRONT_SITE_PATH?>AVIMATLOGO_NEW.png" alt="" class="logo"></a>
