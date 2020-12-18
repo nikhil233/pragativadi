@@ -21,22 +21,40 @@ require('top.php');
 	}
 	.cropper-bg {
 		background: none;
-	}
+    }
+    /* .cropper-move{
+        background-color:red;
+    } */
 </style>
- <div class="row">
-			<h1 class="card-title ml10">Map Image for Page <?php echo $result[0]['page_no'] ?></h1>
-            <div class="col-12 grid-margin stretch-card">
-              <div class="card">
 
-              <img src="<?php echo SITE_NEWS_IMAGE.$result[0]['page_image'] ?>" alt="" width="100%" id="image">
+<h1 class="card-title ml10">Map Image for Page <?php echo $result[0]['page_no'] ?></h1>
+<button type="button" class="btn btn-primary" onclick="crop();">
+Save
+</button>
+<p class="red" style="color:red;font-size:30px;"></p>
+<div class="card">
+    <div class="container-fluid"><img src="<?php echo SITE_NEWS_IMAGE.$result[0]['page_image'] ?>" alt="" width="70%; margin-left:auto; margin-right:auto;" id="image"></div>
+</div>
+<button type="button" class="btn btn-primary" onclick="crop();">
+                    Save
+                </button>
+                <p class="red" style="color:red;font-size:30px;"></p>
+ <div class="row">
+			
+           
+            <div class="col-12 grid-margin stretch-card">
+            
+              <div class="card">
+              
+               
+              
                 <div class="card-body">
+                
                 <?php
                 // echo '<pre>';
                 // print_r($result);
                 ?> 
-                 <button type="button" class="btn btn-primary" onclick="crop();">
-                    Save
-                </button>
+                 
                 <input type="hidden" id="n_id" value="<?php echo $id ?>">
                 <input type="hidden" id="x">
                 <input type="hidden" id="y">
@@ -59,7 +77,7 @@ require('top.php');
                     foreach ((array)$resulti as $res) {
                         ?>
                         <div class="col-md-4 col-12 mt-3">
-                        <img src="<?php echo SITE_NEWSMAP_IMAGE.$res['image'] ?>" style="width:100%" alt="">
+                        <img src="<?php echo SITE_NEWSMAP_IMAGE.$res['image'] ?>" style="width:100%;" alt="">
                         <button class="btn btn-danger mt-3" onclick="delete_image('<?php echo $res['id']?>');">Delete</button>
                         </div>
                     <?php
@@ -74,6 +92,8 @@ require('top.php');
         </div>
                 
 
+
+
 <?php
 require('footer.php');
 ?>
@@ -81,6 +101,10 @@ require('footer.php');
 	$(function () {
 		$("#image").cropper({
 			zoomable: false,
+            autoCropArea:0.3,
+            minCanvasWidth:200,
+            dragMode:'move',
+            viewMode:2,
 			crop: function(event) {
 				// console.log(event.detail.x);
 				// console.log(event.detail.y);
@@ -112,7 +136,7 @@ require('footer.php');
             // alert($('#width').val());
             // alert($('#height').val());
             // console.log(formData);
-
+            $('.red').html('Please Wait.....');
 			$.ajax({
 				url: "map_news.php",
 				method: "POST",
@@ -121,7 +145,9 @@ require('footer.php');
 				contentType: false,
 				success: function (response) {
 					alert(response);
+                    $('.red').html('Done');
                     location.reload();
+                    
 					// alert($('#x').val());
 					// alert($('#y').val());
 					// alert($('#width').val());

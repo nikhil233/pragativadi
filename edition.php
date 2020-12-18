@@ -27,11 +27,11 @@ if(isset($_GET['id'])){
             function getPosts(pageNum){
                 var pageNum = pageNum;
                 var get=$('#getid').val();
-               
+                FRONT_SITE_PATH='http://127.0.0.1/news_manage/';
 
                 $.ajax({
                     type:'POST',
-                    url:'edition_posts.php',
+                    url:FRONT_SITE_PATH+'edition_posts.php',
                     data:{page:pageNum,'id':get},
                     success:function(data){
                         $('.posts').html(data);

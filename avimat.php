@@ -126,7 +126,7 @@ $resulti=$crud->getData($sqli);
                 </section>
                 <h2 id="imgtext">Page 1</h2>
                 <h1 id="pleas"></h1>
-                     <a href="<?php echo SITE_NEWS_IMAGE.$first_img ?>" id="lar_im"> <img src="<?php echo SITE_MAGAZINE_IMAGE.$first_img ?>" id="expandedImg" style="width:100%"></a>
+                     <a href="<?php echo SITE_MAGAZINE_IMAGE.$first_img ?>" id="lar_im" target="_blank"> <img src="<?php echo SITE_MAGAZINE_IMAGE.$first_img ?>" id="expandedImg" style="width:100%"></a>
                
                 
             </div>
@@ -186,3 +186,85 @@ else{
 }
     require('footer.php');
 ?>
+<script>
+  
+    // $('.map').maphilight();
+    
+  function myFunction(imgs,no,id_map) {
+   
+    
+    var expandImg = document.getElementById("expandedImg");
+    var atag = document.getElementById("lar_im");
+    
+    var imgText = document.getElementById("imgtext");
+
+        $('#expandedImg').hide();
+        $('#pleas').append('PLEASE WAIT...');
+        
+        setTimeout(function(){
+            //   $('#img2').show();// or slideDown();  or fadeIn();  
+            imgText.innerHTML = imgs.alt;
+            expandImg.src = imgs.src;
+            atag.href=imgs.src;    
+            $('#expandedImg').show();
+            $('#pleas').html('');
+            $('.map').css('background-image','url('+imgs+')');
+            
+            }, 1000);
+           
+           
+    var header = document.querySelector(".pagination");
+   
+    var header2 = document.querySelector(".pagination_2");
+    
+    var current = header.getElementsByClassName("active");
+    var current2 = header2.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    current2[0].className = current2[0].className.replace(" active", "");
+    var page_no = imgText.textContent;
+    let note = header.querySelector('.Page_'+no);
+    let note2 = header2.querySelector('.Page_'+no);
+    
+    note.parentNode.classList.add('active');
+    note2.parentNode.classList.add('active');
+    expandImg.parentElement.style.display = "block";
+    }
+    function myFunction2(imgs,page_no,no,id_map) {
+      
+        var expandImg = document.getElementById("expandedImg");
+        var imgText = document.getElementById("imgtext");
+        var atag = document.getElementById("lar_im");
+        imgText.innerHTML = page_no;
+        $('#expandedImg').hide();
+        $('#pleas').append('PLEASE WAIT...');
+        setTimeout(function(){
+        //   $('#img2').show();// or slideDown();  or fadeIn();  
+        
+        expandImg.src = imgs;
+        atag.href=imgs;    
+        $('#expandedImg').show();
+        $('#pleas').html('');
+        
+       
+            
+
+        }, 1000);
+        
+        var header = document.querySelector(".pagination");
+   
+        var header2 = document.querySelector(".pagination_2");
+        
+        var current = header.getElementsByClassName("active");
+        var current2 = header2.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        current2[0].className = current2[0].className.replace(" active", "");
+        var page_no = imgText.textContent;
+        let note = header.querySelector('.Page_'+no);
+        let note2 = header2.querySelector('.Page_'+no);
+        
+        note.parentNode.classList.add('active');
+        note2.parentNode.classList.add('active');
+        expandImg.parentElement.style.display = "block";
+    }
+    
+</script>

@@ -147,6 +147,12 @@
     align-items: center;
     justify-content: center;
   }
+  .pagin li:not(.active):not(:first-child):not(:last-child){
+    display:none;
+  }
+  /* .pagin li:not(.active){
+    display:none;
+  } */
   #expandedImg{
     max-width: 100%;
     height: auto;

@@ -67,6 +67,7 @@ function showPosts( $current_page_num, $page_limit, $page_offset){
     if(count($val) > 0){
         
         // fetching data
+
         foreach($val as $row){
             $sqli=  "SELECT page_image from news_posts_image WHERE post_id=".$row['id']." order by id asc LIMIT 1 ";
             $resulti=$crud->getData($sqli);
@@ -78,10 +79,21 @@ function showPosts( $current_page_num, $page_limit, $page_offset){
             </a>
             </div>';
         }
-        
+        $value_page=array();
         // total number of posts
-        $total_posts = count($crud->getData("SELECT id FROM `news_posts`"));
-        
+        foreach($resultk as $cid){
+            $sql=  "SELECT news_posts.id from news_posts,cities where cities.id=".$cid['id']." and cities.id=news_posts.city_id    ";
+            $result=$crud->getData($sql);
+            // print_r($result);
+            if(count($result)>0){
+                foreach($result as $row){
+                    array_push($value_page,$row);
+                }
+            }
+        }
+        // total number of posts
+        // $total_posts = count($crud->getData("SELECT id FROM `news_posts`"));
+        $total_posts = count($value_page);
         // total number of pages
         $total_page = ceil($total_posts / $page_limit);
         // set next page number

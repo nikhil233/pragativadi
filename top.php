@@ -16,6 +16,7 @@ $db = new DbConfig();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
     <link rel="stylesheet" href="<?php echo FRONT_SITE_PATH?>css/style.css">
 </head>
 <body>
@@ -48,7 +49,7 @@ $db = new DbConfig();
 
                     ?>
                         <li class="nav-item ">
-                            <a class="nav-link active" href="<?php echo FRONT_SITE_PATH?>edition.php?id=<?php echo $res['id']?>"><?php echo $res['cat_name']?></a>
+                            <a class="nav-link active" href="<?php echo FRONT_SITE_PATH?>edition/<?php echo $res['id']?>"><?php echo $res['cat_name']?></a>
                         </li>
                     <?php
                         $i++;

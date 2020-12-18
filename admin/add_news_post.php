@@ -31,11 +31,11 @@ if(isset($_POST['submit'])){
         }
         $counter++;
         $UploadOk = true;
-        if($_FILES["files"]["size"][$key] > $totalBytes)
-        {
-            $UploadOk = false;
-            array_push($errors, $name." file size is larger than the 1 MB.");
-        }
+        // if($_FILES["files"]["size"][$key] > $totalBytes)
+        // {
+        //     $UploadOk = false;
+        //     array_push($errors, $name." file size is larger than the 1 MB.");
+        // }
         if(in_array($ext, $extension) == false){
             $UploadOk = false;
             array_push($errors, $name." is invalid file type.");
